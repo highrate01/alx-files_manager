@@ -28,13 +28,11 @@ class DBClient {
   isAlive() {
     return this.connected;
   }
-
-  async nbUsers() {
-    if (!this.connected) return 0;
-    const database = this.client.db();
-    const usersCollection = database.collection('users');
-    const res = await usersCollection.countDocuments();
-    return res;
+  async getUser(query) {
+    console.log('QUERY IN DB.JS', query);
+    const user = await this.db.collection('users').findOne(query);
+    console.log('GET USER IN DB.JS', user);
+    return user;
   }
 
   async nbFiles() {
