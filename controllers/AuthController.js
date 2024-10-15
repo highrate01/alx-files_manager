@@ -19,7 +19,7 @@ class AuthController {
     }
 
     const hashedPassword = sha1(password);
-   
+
     try {
       const db = dbClient.client.db(dbClient.dbName);
       const usersCollection = db.collection('users');
